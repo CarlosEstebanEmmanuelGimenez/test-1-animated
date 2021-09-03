@@ -4,6 +4,15 @@ import './App.css';
 
 function App() {
   const [animated, setAnimated] = useState(false)
+  const [contador, setContador] = useState(0)
+
+  const sumar = () => {
+
+    if (!animated) {
+      setContador(contador + 1)
+    }
+  }
+
 
   const animar = () => {
     console.log("click")
@@ -13,6 +22,8 @@ function App() {
   }
 
   console.log('animated :>> ', animated);
+
+
 
   return (
     <div className="App">
@@ -26,18 +37,29 @@ function App() {
         }
 
         <p>
-          Pulse este boton para cambiar imagen
+          Pulse boton para animar imagen
         </p>
         <div>
-          <button onClick={animar}>
+          <button className="click" onClick={() => {
+            animar()
+            sumar()
+          }}>
+
             {
               animated ? (
-                <p>Detener</p> 
+                <p>Detener</p>
               ) : (
                 <p>Animar</p>
               )
             }
           </button>
+          <p>
+            Contador
+          </p>
+          <div>
+            {contador}
+          </div>
+
 
         </div>
       </header>
